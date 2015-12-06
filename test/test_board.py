@@ -19,3 +19,6 @@ class TestBoard(unittest.TestCase):
     def test_board_cell_at_out_of_range(self):
         board = Board(raws=10, cols=10)
         self.assertRaises(BoardOutOfRange, board.cell_at, 11, 11)
+
+        board = Board(raws=10, cols=10)
+        self.assertRaises(BoardOutOfRange, board.cell_at, 10, 11)
