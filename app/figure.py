@@ -1,16 +1,14 @@
 from abc import ABCMeta, abstractmethod
 
 class Figure(object):
-    __metaclass__ = ABCMeta
+    def __init__(self, coordX, coordY):
+        self.x = coordX
+        self.y = coordY
 
     @abstractmethod
     def attack_coords(self): raise NotImplementedError()
 
 class KingFigure(Figure):
-    def __init__(self, coordX, coordY):
-        self.x = coordX
-        self.y = coordY
-
     def attack_coords(self):
         return [
             (self.x-1, self.y),
