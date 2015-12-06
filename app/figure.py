@@ -34,3 +34,26 @@ class KnightFigure(Figure):
         down = [(self.x+2, self.y-1), (self.x+2, self.y+1)]
 
         return up + left + right + down
+
+class BishopFigure(Figure):
+    def attack_coords(self, aRange):
+        up_right = [(self.x - (k+1), self.y + (k+1)) for k in range(aRange)]
+        up_left = [(self.x - (k+1), self.y - (k+1)) for k in range(aRange)]
+        down_right = [(self.x+(k+1), self.y + (k+1)) for k in range(aRange)]
+        down_left = [(self.x+(k+1), self.y - (k-1)) for k in range(aRange)]
+
+        return up_right + up_left + down_right + down_left
+
+class QueenFigure(Figure):
+    def attack_coords(self, aRange):
+        up_right = [(self.x - (k+1), self.y + (k+1)) for k in range(aRange)]
+        up_left = [(self.x - (k+1), self.y - (k+1)) for k in range(aRange)]
+        down_right = [(self.x+(k+1), self.y + (k+1)) for k in range(aRange)]
+        down_left = [(self.x+(k+1), self.y - (k-1)) for k in range(aRange)]
+
+        up = [(self.x-(k+1), self.y) for k in range(aRange)]
+        left = [(self.x, self.y-(k+1)) for k in range(aRange)]
+        right = [(self.x, self.y+(k+1)) for k in range(aRange)]
+        down = [(self.x+(k+1), self.y) for k in range(aRange)]
+
+        return up + left + right + down + up_right + up_left + down_right + down_left

@@ -1,5 +1,5 @@
 import unittest
-from app.figure import Figure, KingFigure, RookFigure, KnightFigure
+from app.figure import Figure, KingFigure, RookFigure, KnightFigure, BishopFigure, QueenFigure
 
 class TestFigure(unittest.TestCase):
     def test_figure(self):
@@ -31,3 +31,22 @@ class TestFigure(unittest.TestCase):
         ]
 
         self.assertListEqual(figure.attack_coords(), expectedList)
+
+    def test_bishop_figure_attack_coords(self):
+        figure = BishopFigure(5, 5)
+        inRange = 2
+        expectedList = [
+            (4, 6), (3, 7), (4, 4), (3, 3), (6, 6), (7, 7), (6, 6), (7, 5)
+        ]
+
+        self.assertListEqual(figure.attack_coords(inRange), expectedList)
+
+    def test_queen_figure_attack_coords(self):
+        figure = QueenFigure(5, 5)
+        inRange = 2
+        expectedList = [
+            (4, 5), (3, 5), (5, 4), (5, 3), (5, 6), (5, 7), (6, 5), (7, 5),
+            (4, 6), (3, 7), (4, 4), (3, 3), (6, 6), (7, 7), (6, 6), (7, 5)
+        ]
+
+        self.assertListEqual(figure.attack_coords(inRange), expectedList)
