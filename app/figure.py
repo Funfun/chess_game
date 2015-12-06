@@ -25,3 +25,12 @@ class RookFigure(Figure):
         down = [(self.x+(k+1), self.y) for k in range(aRange)]
 
         return up + left + right + down
+
+class KnightFigure(Figure):
+    def attack_coords(self):
+        up = [(self.x-2, self.y - 1), (self.x-2, self.y + 1)]
+        left = [(self.x, self.y - 2), (self.x, self.y - 2)]
+        right = [(self.x-1, self.y + 2), (self.x+1, self.y + 2)]
+        down = [(self.x+2, self.y-1), (self.x+2, self.y+1)]
+
+        return up + left + right + down
