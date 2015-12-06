@@ -4,3 +4,4 @@ class Board(object):
         super(Board, self).__init__()
         self.raws = raws
         self.cols = cols
+        self.cells = []
