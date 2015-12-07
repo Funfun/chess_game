@@ -4,3 +4,7 @@ class Cell(object):
         super(Cell, self).__init__()
         self.x = x
         self.y = y
+        self.value = -1
+
+    def coords(self):
+        return (self.x, self.y)

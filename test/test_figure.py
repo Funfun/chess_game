@@ -10,7 +10,7 @@ class TestFigure(unittest.TestCase):
 
     def test_king_figure_attack_coords(self):
         king = KingFigure(5, 5)
-        expectedList = [(4, 5), (5, 4), (5, 6), (6, 5)]
+        expectedList = [(4, 5), (5, 4), (5, 6), (6, 5), (4, 6), (4, 4), (6, 6), (6, 6)]
 
         self.assertListEqual(king.attack_coords(), expectedList)
 

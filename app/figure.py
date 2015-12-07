@@ -8,15 +8,6 @@ class Figure(object):
     @abstractmethod
     def attack_coords(self): raise NotImplementedError()
 
-class KingFigure(Figure):
-    def attack_coords(self):
-        return [
-            (self.x-1, self.y),
-            (self.x, self.y-1),
-            (self.x, self.y+1),
-            (self.x+1, self.y)
-        ]
-
 class RookFigure(Figure):
     def attack_coords(self, aRange):
         up = [(self.x-(k+1), self.y) for k in range(aRange)]
@@ -27,7 +18,7 @@ class RookFigure(Figure):
         return up + left + right + down
 
 class KnightFigure(Figure):
-    def attack_coords(self):
+    def attack_coords(self, aRange=None):
         up = [(self.x-2, self.y - 1), (self.x-2, self.y + 1)]
         left = [(self.x, self.y - 2), (self.x, self.y - 2)]
         right = [(self.x-1, self.y + 2), (self.x+1, self.y + 2)]
@@ -56,4 +47,10 @@ class QueenFigure(Figure):
         right = [(self.x, self.y+(k+1)) for k in range(aRange)]
         down = [(self.x+(k+1), self.y) for k in range(aRange)]
 
-        return up + left + right + down + up_right + up_left + down_right + down_left
+        return (
+            up + left + right + down + up_right +
+            up_left + down_right + down_left)
+
+class KingFigure(QueenFigure):
+    def attack_coords(self, aRange=None):
+        return super(KingFigure, self).attack_coords(1)

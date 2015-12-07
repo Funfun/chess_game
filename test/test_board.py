@@ -22,3 +22,6 @@ class TestBoard(unittest.TestCase):
 
         board = Board(raws=10, cols=10)
         self.assertRaises(BoardOutOfRange, board.cell_at, 10, 11)
+        self.assertRaises(BoardOutOfRange, board.cell_at, -10, 11)
+        self.assertRaises(BoardOutOfRange, board.cell_at, -10, -11)
+        self.assertRaises(BoardOutOfRange, board.cell_at, 10, -11)
